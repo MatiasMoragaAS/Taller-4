@@ -1,0 +1,25 @@
+name: eval
+
+on:
+  push:
+  pull_request:
+    
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: install dependencies
+        run: pip install pytest
+
+      - name: Run tests with pytest
+        run: pytest -v
